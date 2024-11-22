@@ -1,6 +1,6 @@
 /**
  *    author:  ahammadabdullah
- *    created: 2024-11-19 22:37:17
+ *    created: 2024-11-20 20:30:58
  **/
 
 #include <bits/stdc++.h>
@@ -28,22 +28,9 @@ using namespace std;
 int main()
 {
     FAST_IO;
-    ll n, k;
-    cin >> n >> k;
-    vector<int> v(n);
-    inp(v);
-    ll l = 0, r = 0, ans = 0, sum = 0;
-    while (r < n)
-    {
-        sum += v[r];
-        while (sum >= k)
-        {
-            ans += n - r;
-            sum -= v[l];
-            l++;
-        }
-        r++;
-    }
-    cout << ans << nl;
+
+    ll x, y;
+    cin >> x >> y;
+    cout << (x * 5000) + (y * 9800) << nl;
     return 0;
 }

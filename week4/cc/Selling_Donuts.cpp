@@ -1,6 +1,6 @@
 /**
  *    author:  ahammadabdullah
- *    created: 2024-11-19 22:37:17
+ *    created: 2024-11-20 20:33:13
  **/
 
 #include <bits/stdc++.h>
@@ -25,25 +25,31 @@ using namespace std;
 #define debug(x) cerr << #x << " = " << (x) << endl;
 #define yes cout << "YES" << nl
 #define no cout << "NO" << nl
+void solve()
+{
+    int n, m;
+    cin >> n >> m;
+    vector<int> v(n), V(m);
+    inp(v);
+    inp(V);
+    int cnt = 0;
+    for (auto val : V)
+    {
+        if (v[val - 1] > 0)
+        {
+            v[val - 1]--;
+            cnt++;
+        }
+    }
+    cout << m - cnt << nl;
+}
 int main()
 {
     FAST_IO;
-    ll n, k;
-    cin >> n >> k;
-    vector<int> v(n);
-    inp(v);
-    ll l = 0, r = 0, ans = 0, sum = 0;
-    while (r < n)
-    {
-        sum += v[r];
-        while (sum >= k)
-        {
-            ans += n - r;
-            sum -= v[l];
-            l++;
-        }
-        r++;
-    }
-    cout << ans << nl;
+
+    int t;
+    cin >> t;
+    while (t--)
+        solve();
     return 0;
 }

@@ -1,6 +1,6 @@
 /**
  *    author:  ahammadabdullah
- *    created: 2024-11-19 22:37:17
+ *    created: 2024-11-22 07:18:42
  **/
 
 #include <bits/stdc++.h>
@@ -25,25 +25,44 @@ using namespace std;
 #define debug(x) cerr << #x << " = " << (x) << endl;
 #define yes cout << "YES" << nl
 #define no cout << "NO" << nl
-int main()
+#define PREFIX_SUM(vec, prefix)             \
+    prefix.resize(vec.size());              \
+    prefix[0] = vec[0];                     \
+    for (size_t i = 1; i < vec.size(); ++i) \
+        prefix[i] = prefix[i - 1] + vec[i];
+
+void solve()
 {
-    FAST_IO;
     ll n, k;
     cin >> n >> k;
-    vector<int> v(n);
+    vector<ll> v(n), V(n);
     inp(v);
-    ll l = 0, r = 0, ans = 0, sum = 0;
+    inp(V);
+    ll l = 0, r = 0, sum = 0, cnt = 0;
     while (r < n)
     {
         sum += v[r];
-        while (sum >= k)
+        while (l < r && (sum > k || r > 0 && V[r - 1] % V[r] != 0))
         {
-            ans += n - r;
             sum -= v[l];
             l++;
         }
+        if (sum <= k)
+        {
+            cnt = max(cnt, r - l + 1);
+        }
         r++;
     }
-    cout << ans << nl;
+    cout << cnt << nl;
+}
+
+int main()
+{
+    FAST_IO;
+
+    int t;
+    cin >> t;
+    while (t--)
+        solve();
     return 0;
 }
