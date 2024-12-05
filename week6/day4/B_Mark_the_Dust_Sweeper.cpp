@@ -27,9 +27,9 @@ using namespace std;
 #define no cout << "NO" << nl
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
-    deque<int> dq(n);
+    deque<ll> dq(n);
     inp(dq);
     for (int i = 0; i < n; i++)
     {
@@ -38,7 +38,7 @@ void solve()
             dq.pop_front();
         }
     }
-    int cnt = 0;
+    ll cnt = 0;
     if (dq.empty())
     {
         cout << cnt << nl;
